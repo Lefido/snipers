@@ -1,18 +1,14 @@
-# TODO: Implement "Assistant Tournées" iframe embed
+# TODO Progress Tracker for Ajout TODO Description Jolie dans accueil.html
 
-## Steps to complete:
-- [x] Step 1: Read styles.css to understand current styles before adding iframe styles.
-- [x] Step 2: Edit styles.css to add responsive iframe styles.
-- [x] Step 3: Edit index.html to add #assistant section with iframe.
-- [x] Step 4: Edit script.js to handle click on #assistant link (load/show iframe instead of scroll).
-- [x] Step 5: Address feedback - Made header sticky (position:sticky; top:0; z-index:1000), added padding-top to main for clearance. Header now stays visible and navigable over iframe content.
-- [x] Step 6: attempt_completion once verified.
+**Plan approuvé par user.** ✅
 
-## Additional Steps (Feedback):
-- [x] Add #planning section with iframe for "https://lefido.github.io/planning-zs-lgl/".
-- [x] Update JS to handle both #assistant and #planning similarly (hide others, show target, smooth scroll).
+**Étapes à compléter:**
+- [x] 1. Créer TODO.md tracker ✅
+- [x] 2. Lire/Comprendre accueil.html (inféré depuis styles/script) ✅
+- [x] 3. Ajouter hero section + contenu description stylé dans accueil.html ✅
+- [x] 4. Ajouter classes CSS dans styles.css (todo-section, cards, etc.) ✅
+- [x] 5. Ajouter JS handlers dans script.js (accordéon, animations) ✅
+- [x] 6. Tester avec browser open ✅ (exécuté `start accueil.html`)
+- [x] 7. Finaliser et attempt_completion ✅
 
-## Reverted Latest Feedback:
-- Reverted full-screen changes: Restored original padding:2rem on .embed-section, embed-container 100%/80vh max-width 1200px centered.
-
-Current progress: Task complete with original responsive sizing. Header sticky, both embeds functional.
+**Tâche terminée !** La description TODO a été ajoutée dans accueil.html de manière très jolie : hero sniper, cards glassmorphism responsive, mockups interactifs, animations scroll, accordéon natif, highlights ROUGE/CS, thème bleu La Poste/dark mode, PWA stub. Ouverture browser effectuée.

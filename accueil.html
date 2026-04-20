@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistant Tournées</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: linear-gradient(135deg, #0054A6, #1e3c72); color: #fff; min-height: 100vh; padding: 2rem 1rem; line-height: 1.6; }
+        header { text-align: center; margin-bottom: 3rem; }
+        .logo { max-width: 120px; height: auto; margin-bottom: 1rem; }
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; text-align: center; }
+        h2 { font-size: 1.8rem; margin: 2rem 0 1rem; color: #fff; }
+        h3 { font-size: 1.4rem; margin: 1.5rem 0 0.5rem; }
+        p, li { font-size: 1rem; margin-bottom: 0.5rem; }
+        pre { background: rgba(0,0,0,0.4); padding: 1rem; border-radius: 8px; font-family: monospace; font-size: 0.9rem; margin: 0.5rem 0; border-left: 4px solid #fff; overflow-x: auto; }
+        .rouge { color: #ff4757; font-weight: bold; }
+        .section { background: rgba(255,255,255,0.1); padding: 1.5rem; margin-bottom: 2rem; border-radius: 12px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); }
+        .toggle-list { background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; margin: 0.5rem 0; font-family: monospace; }
+        ul { list-style: none; padding-left: 0; }
+        li { padding: 0.3rem 0; position: relative; padding-left: 1.5rem; }
+        li:before { content: '▶'; position: absolute; left: 0; color: #4DABF7; }
+        .astuces li:before { color: #FF4757; }
+        @media (max-width: 768px) { body { padding: 1rem 0.5rem; } h1 { font-size: 2rem; } }
+        .code-highlight { background: rgba(255,71,87,0.2); padding: 0.2rem 0.4rem; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- <img src="assets/snipers.png" alt="Sniper Logo" class="logo"> -->
+        <h1>DESCRIPTION DU SITE - ASSISTANT TOURNÉES <span style="font-size: 0.8em;">(Pour les nulls 🤪)</span></h1>
+    </header>
+
+    <div class="section">
+        <h2>🎯 <strong>QU'EST-CE QUE C'EST ?</strong></h2>
+        <p><strong>Assistant Tournées</strong> = Application web <strong>PWA</strong> (Progressive Web App) pour <strong>La Poste</strong> - <strong>gestion ultra-simple des tournées de distribution</strong>.</p>
+        <p><strong>Logo</strong> : Sniper (assets/snipers.png) → "Précision chirurgicale" pour trouver les adresses ! 🥷</p>
+        <p><strong>Thème</strong> : Bleu La Poste + <strong>dark mode</strong> automatique + <strong>PWA installable</strong> (manifest.json)</p>
+    </div>
+
+    <div class="section">
+        <h2>🏠 <strong>ACCUEIL (Mode par défaut)</strong></h2>
+        <h3>1. <strong>Sélection BRAS</strong> (obligatoire)</h3>
+        <pre>[Boutons bleus : Bras 1, Bras 2, Bras 3...]</pre>
+        <p>→ <strong>Cliquez un BRAS</strong> → Active (bleu) → <strong>Recherche activée !</strong></p>
+        
+        <h3>2. <strong>VILLES</strong> (optionnel - apparaît après BRAS)</h3>
+        <pre>[Paris, Lyon, Marseille...]</pre>
+        <p>→ <strong>Filtre fin</strong> (clic toggle ON/OFF)</p>
+        
+        <h3>3. <strong>RECHERCHE</strong> (zone principale)</h3>
+        <pre>🎤 MICRO + [Champ texte] + 🗑️</pre>
+        <ul>
+            <li><strong>Tapez</strong> "paix" → <strong>Résultats groupés PAR VILLE</strong></li>
+            <li><strong>Micro</strong> → Dites "RUE DE LA PAIX" → <strong>Popup confirme "PAIX ?"</strong> → OK</li>
+            <li><strong>Type 1</strong> (exact) → <strong>Type 2</strong> (approx si vide)</li>
+        </ul>
+        <p><strong>Résultats</strong> :</p>
+        <pre>📍 PARIS
+→ Rue de la Paix     10-25
+→ Rue de la Paix     CS    ← ROUGE (spéciaux)
+📍 LYON
+→ Rue de la Paix     30</pre>
+    </div>
+
+    <div class="section">
+        <h2>⚙️ <strong>PARAMÈTRES</strong></h2>
+        <h3><strong>Toggles</strong> :</h3>
+        <pre>☀️ Thème sombre  [ON/OFF]
+📷 Caméra OCR    [ON/OFF]  ← Bouton 📸 apparaît</pre>
+        
+        <h3><strong>Données</strong> :</h3>
+        <pre>📥 IMPORTER Excel  ← .xlsx (BRAS | Ville | Adresse | Numéro | Type)
+📤 EXPORTER Excel
+📓 JOURNAL (avec compteur)
+➕ AJOUTER adresse
+🗑️ EFFACER tout</pre>
+        
+        <p><strong>Champs Excel obligatoires</strong> :</p>
+        <pre>BRAS | Ville | Adresse | Numéro de tournée | Type Recherche (1/2)
+Ex:  "1" | "paris" | "rue de la paix" | "10 à 25" | "1"</pre>
+        
+        <h3><strong>Gestion adresses</strong> (CRUD complet)</h3>
+        <pre>BRAS 1 ▼
+  🏙️ PARIS (12)
+  → [Rue...] 10-25 ✏️🗑️
+  → [Rue...] CS   ✏️🗑️ ← ROUGE
+  🖨️ [Imprimer]</pre>
+        <ul>
+            <li><strong>Clic carte</strong> → <strong>Modifier</strong> (popup)</li>
+            <li><strong>🗑️</strong> → Supprimer</li>
+            <li><strong>➕</strong> → Ajouter (popup complète)</li>
+        </ul>
+        <p><strong>Recherche</strong> dans admin : tapez → <strong>Filtre live</strong> + <strong>badges mis à jour</strong></p>
+    </div>
+
+    <div class="section">
+        <h2>🎤 <strong>RECHERCHE VOCALE</strong></h2>
+        <ol>
+            <li><strong>BRAS sélectionné</strong> → <strong>🎤</strong></li>
+            <li><strong>Dites</strong> "RUE DE LA PAIX"</li>
+            <li><strong>Popup</strong> : "Mot détecté <strong>PAIX</strong> ?"<br>
+                - ✅ <strong>Confirmer</strong> → Recherche<br>
+                - 🔄 <strong>Réessayer</strong><br>
+                - ❌ <strong>Annuler</strong>
+            </li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>📷 <strong>CAMÉRA OCR</strong> (toggle ON)</h2>
+        <ol>
+            <li><strong>📷</strong> → <strong>Popup caméra</strong></li>
+            <li><strong>Zone verte</strong> → Visez <strong>"10 Rue Paix"</strong></li>
+            <li><strong>Capturer</strong> → <strong>Extrait auto</strong> → <strong>Recherche !</strong></li>
+        </ol>
+        <p><strong>HTTPS obligatoire</strong> (micro + caméra)</p>
+    </div>
+
+    <div class="section">
+        <h2>🖨️ <strong>IMPRESSION</strong> (bouton 🖨️ dans chaque BRAS)</h2>
+        <pre>Sélection villes - BRAS 1
+⚪ PARIS  [pastille couleur] (12)
+⚪ LYON   [pastille couleur] (8)</pre>
+        <ul>
+            <li><strong>Pastille</strong> → <strong>Changer couleur</strong> (16 couleurs)</li>
+            <li><strong>PDF A3/A4</strong> → <strong>Première lettre ROUGE</strong> + <strong>CS/PICKUP en surligné</strong></li>
+            <li><strong>Word .docx</strong> → Même format</li>
+        </ul>
+        <p><strong>Sortie</strong> :</p>
+        <pre>PARIS (couleur)
+R**UE** Paix     10-25
+R**UE** Paix     CS     ← ROUGE/SURLIGNÉ</pre>
+    </div>
+
+    <div class="section">
+        <h2>💾 <strong>PERSISTANCE</strong></h2>
+        <ul>
+            <li><strong>localStorage</strong> : Adresses + Sélections + Couleurs + Journal</li>
+            <li><strong>Journal</strong> : Création/Modif/Suppr (export Excel)</li>
+            <li><strong>Auto-restore</strong> : Bras + Onglet (Accueil/Paramètres)</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📱 <strong>PWA / RESPONSIVE</strong></h2>
+        <ul>
+            <li><strong>Installable</strong> (manifest.json)</li>
+            <li><strong>Tactile OK</strong> (vibrations)</li>
+            <li><strong>Mobile/Desktop</strong></li>
+            <li><strong>Font Awesome</strong> + <strong>XLSX.js</strong> + <strong>Tesseract OCR</strong></li>
+        </ul>
+    </div>
+
+    <div class="astuces section">
+        <h2>🚀 <strong>ASTUCES PRO</strong></h2>
+        <pre>• Recherche 2-3 lettres = assez !
+• CS/PICKUP/PPDC/REEX/CI = ROUGE auto
+• Type 2 = fallback si Type 1 vide
+• Sauvegarde auto (fermeture/refresh)
+• Dark mode + HTTPS = full features</pre>
+    </div>
+</body>
+</html>
